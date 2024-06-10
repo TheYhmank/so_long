@@ -6,8 +6,13 @@
 /*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:58:05 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/06/10 17:58:20 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:34:15 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int error_check(t_map *map, t_map *backup_map)
+{
+    
+}
