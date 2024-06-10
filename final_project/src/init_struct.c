@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:01:34 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/06/10 16:03:29 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:35:34 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void init_struct(t_game *game, char *map_path)
     
     init_pointers(game, 0);
     init_map(&game->map, map_path);
-    if (copy_t_map(&game->backup_map, &game->map) == -1)
+    if (copy_t_map(&game->backup_map, &game->map) == -1) //none
         end_game(game, EXIT_FAILURE);
 }
