@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 17:19:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/06/20 17:38:58 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:57:18 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_enemy
     int *y;
     int idle_time;
     char *facing;
+    char	init_facing;
 } t_enemy;
 
 
@@ -85,7 +86,19 @@ typedef struct s_player
 
 typedef struct s_texture
 {
-    //none
+	void	*player_l[4];
+	void	*player_r[4];
+	void	*monster_l[4];
+	void	*monster_r[4];
+	void	*collect[4];
+	void	*exit[2];
+	void	*wall;
+	void	*floor;
+	int		*px_size;
+	int		*px_height;
+	int		*px_width;
+	int		keyframe;
+	int		frame;
 } t_texture;
 
 
@@ -99,5 +112,8 @@ typedef struct s_game
     t_map		*map;
 } t_game;
 
+void init_struct_pointers(t_game *data);
+void create_map(t_game *data, int argc, char **argv);
+void init_vars(t_game *init);
 
 #endif
