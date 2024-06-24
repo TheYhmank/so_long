@@ -1,0 +1,117 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   logic.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/23 19:22:34 by ayermeko          #+#    #+#             */
+/*   Updated: 2024/06/23 19:24:47 by ayermeko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/so_long.h"
+
+static void	check_unique(t_data *data)
+{
+	if (data->map->map[data->player->y][data->player->x] == 'C')
+	{
+		data->player->score++;
+	}
+	else if (data->map->map[data->player->y][data->player->x] == 'M')
+	{
+		ft_printf("You lost!\n");
+		game_destroy(data);
+	}
+	return ;
+}
+
+void	check_up(t_data *data)
+{
+	if (data->map->map[data->player->y - 1][data->player->x] == '1')
+		return ;
+	else if (data->map->map[data->player->y - 1][data->player->x] == 'E')
+	{
+		if (data->player->win == 1)
+		{
+			data->player->moves++;
+			ft_printf("Move #%i\n", data->player->moves);
+			ft_printf("You won!\n");
+			game_destroy(data);
+			return ;
+		}
+	}
+	data->player->y--;
+	data->player->moves++;
+	ft_printf("Move #%i\n", data->player->moves);
+	check_unique(data);
+	return ;
+}
+
+void	check_down(t_data *data)
+{
+	if (data->map->map[data->player->y + 1][data->player->x] == '1')
+		return ;
+	else if (data->map->map[data->player->y + 1][data->player->x] == 'E')
+	{
+		if (data->player->win == 1)
+		{
+			data->player->moves++;
+			ft_printf("Move #%i\n", data->player->moves);
+			ft_printf("You won!\n");
+			game_destroy(data);
+			return ;
+		}
+	}
+	data->player->y++;
+	data->player->moves++;
+	ft_printf("Move #%i\n", data->player->moves);
+	check_unique(data);
+	return ;
+}
+
+void	check_left(t_data *data)
+{
+	data->player->facing = 'L';
+	if (data->map->map[data->player->y][data->player->x - 1] == '1')
+		return ;
+	else if (data->map->map[data->player->y][data->player->x - 1] == 'E')
+	{
+		if (data->player->win == 1)
+		{
+			data->player->moves++;
+			ft_printf("Move #%i\n", data->player->moves);
+			ft_printf("You won!\n");
+			game_destroy(data);
+			return ;
+		}
+	}
+	data->player->x--;
+	data->player->moves++;
+	ft_printf("Move #%i\n", data->player->moves);
+	check_unique(data);
+	return ;
+}
+
+void	check_right(t_data *data)
+{
+	data->player->facing = 'R';
+	if (data->map->map[data->player->y][data->player->x + 1] == '1')
+		return ;
+	else if (data->map->map[data->player->y][data->player->x + 1] == 'E')
+	{
+		if (data->player->win == 1)
+		{
+			data->player->moves++;
+			ft_printf("Move #%i\n", data->player->moves);
+			ft_printf("You won!\n");
+			game_destroy(data);
+			return ;
+		}
+	}
+	data->player->x++;
+	data->player->moves++;
+	ft_printf("Move #%i\n", data->player->moves);
+	check_unique(data);
+	return ;
+}
